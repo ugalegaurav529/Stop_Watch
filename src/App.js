@@ -10,11 +10,11 @@ const App = () => {
       timer = setInterval(() => {
         setSeconds((prev) => prev + 1);
       }, 1000);
-    } else if (!isRunning && seconds !== 0) {
+    } else {
       clearInterval(timer);
     }
     return () => clearInterval(timer);
-  }, [isRunning, seconds]);
+  }, [isRunning]);
 
   const formatTime = (totalSeconds) => {
     const minutes = Math.floor(totalSeconds / 60);
@@ -23,22 +23,20 @@ const App = () => {
   };
 
   const handleStartStop = () => {
-    setIsRunning(!isRunning);
+    setIsRunning((prev) => !prev);
   };
 
   const handleReset = () => {
     setIsRunning(false);
     setSeconds(0);
   };
+
   return (
     <div className="stopwatch-container">
       <h1>Stopwatch</h1>
       <div className="stopwatch-time">{formatTime(seconds)}</div>
-      <br />
-      <div className="buttons">
       <button onClick={handleStartStop}>{isRunning ? "Stop" : "Start"}</button>
       <button onClick={handleReset}>Reset</button>
-      </div>
     </div>
   );
 };
