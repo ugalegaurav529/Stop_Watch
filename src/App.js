@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+
 
 const App = () => {
   const [seconds, setSeconds] = useState(0);
@@ -19,7 +20,7 @@ const App = () => {
   const formatTime = (totalSeconds) => {
     const minutes = Math.floor(totalSeconds / 60);
     const secs = totalSeconds % 60;
-    return `${minutes}:${secs.toString().padStart(2, "0")}`;
+    return `${minutes}:${secs.toString().padStart(2, '0')}`;
   };
 
   const handleStartStop = () => {
@@ -34,8 +35,10 @@ const App = () => {
   return (
     <div className="stopwatch-container">
       <h1>Stopwatch</h1>
-      <div className="stopwatch-time">{formatTime(seconds)}</div>
-      <button onClick={handleStartStop}>{isRunning ? "Stop" : "Start"}</button>
+      <div className="stopwatch-time">Time: {formatTime(seconds)}</div>
+      <button onClick={handleStartStop}>
+        {isRunning ? 'Stop' : 'Start'}
+      </button>
       <button onClick={handleReset}>Reset</button>
     </div>
   );
